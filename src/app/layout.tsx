@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     siteName: 'Samsung para Empresas',
     images: [
       {
-        url: 'https://placehold.co/1200x630.png', // Replace with your actual OG image
+        url: '/og-image.png', // Replaced placeholder with local image
         width: 1200,
         height: 630,
       },
