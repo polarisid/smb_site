@@ -22,6 +22,8 @@ const PRODUCTS = [
     id: "s24-enterprise",
     name: "Galaxy S24 | Enterprise Edition",
     category: "mobility",
+    image: "/1.png",
+    imageHint: "smartphone galaxy",
     bullets: [
       "Knox Suite inclusa por período promocional",
       "Ciclo estendido de segurança/OS (EE)",
@@ -33,6 +35,8 @@ const PRODUCTS = [
     id: "tab-active",
     name: "Galaxy Tab Active Rugged",
     category: "mobility",
+    image: "/2.png",
+    imageHint: "rugged tablet",
     bullets: [
       "IP68 + MIL-STD-810H",
       "Caneta e bateria substituível",
@@ -44,6 +48,8 @@ const PRODUCTS = [
     id: "smart-monitor",
     name: "Smart Monitor + Signage Pro",
     category: "displays",
+    image: "/3.png",
+    imageHint: "smart monitor",
     bullets: [
       "Pronto para sinalização digital/LOBBY",
       "Gestão remota e agendamento de conteúdo",
@@ -55,6 +61,8 @@ const PRODUCTS = [
     id: "the-wall",
     name: "The Wall (MicroLED)",
     category: "displays",
+    image: "/4.png",
+    imageHint: "microled display",
     bullets: [
       "Escalável por módulos",
       "Preto absoluto e altíssimo contraste",
@@ -66,6 +74,8 @@ const PRODUCTS = [
     id: "windfree-pro",
     name: "WindFree™ Pro Comercial",
     category: "hvac",
+    image: "/5.png",
+    imageHint: "air conditioner",
     bullets: [
       "Conforto sem vento direto",
       "Eficiência energética para escritórios e lojas",
@@ -77,6 +87,8 @@ const PRODUCTS = [
     id: "knox-suite",
     name: "Samsung Knox Suite",
     category: "services",
+    image: "/6.png",
+    imageHint: "security shield",
     bullets: [
       "MDM, proteção e implantação massiva",
       "Gestão de ciclo de vida dos dispositivos",
@@ -109,7 +121,16 @@ function Section({ id, title, subtitle, children }: { id: string; title: string;
 
 function ProductCard({ p }: { p: typeof PRODUCTS[number] }) {
   return (
-    <Card className="rounded-2xl shadow-sm hover:shadow-md transition">
+    <Card className="rounded-2xl shadow-sm hover:shadow-md transition overflow-hidden">
+        <div className="aspect-square w-full relative">
+            <Image 
+                src={p.image}
+                alt={p.name}
+                fill
+                className="object-cover"
+                data-ai-hint={p.imageHint}
+            />
+        </div>
       <CardHeader>
         <CardTitle className="flex items-center justify-between gap-3">
           <span>{p.name}</span>
@@ -151,7 +172,7 @@ export default function B2BSamsungLanding() {
       <header className="sticky top-0 z-50 backdrop-blur bg-white/70 border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Image src="/logo.png" alt="logo" width={100} height={40} />
+            <Image src="/logo.png" alt="logo" width={40} height={40} />
             <span className="font-semibold tracking-tight">Samsung para Empresas</span>
           </div>
           <nav className="hidden md:flex items-center gap-6 text-sm">
@@ -273,6 +294,7 @@ export default function B2BSamsungLanding() {
               <ul className="list-disc ml-5 space-y-1">
                 <li>Cadastre sua empresa e valide CNPJ.</li>
                 <li>Navegue pelo catálogo e selecione os itens.</li>
+                <li>Utilize os cupons abaixo para descontos progressivos: <strong>CRP3198122</strong>, <strong>CRP3886546</strong>, <strong>CRP5286953</strong>.</li>
                 <li>Solicite proposta ou finalize a compra conforme políticas B2B.</li>
               </ul>
               <div className="flex gap-2 pt-2">

@@ -4,13 +4,19 @@ import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { ArrowRight, Lightbulb } from 'lucide-react';
+import { ArrowRight, Lightbulb, TicketPercent } from 'lucide-react';
 
 const steps = [
   { step: '1', title: 'Cadastre seu CNPJ', description: 'Acesse o portal e crie sua conta de empresa.' },
   { step: '2', title: 'Navegue e Selecione', description: 'Explore nosso catálogo e adicione produtos ao seu carrinho.' },
   { step: '3', title: 'Solicite ou Compre', description: 'Peça uma proposta personalizada ou compre diretamente.' },
 ];
+
+const coupons = [
+    { code: 'CRP3198122'},
+    { code: 'CRP3886546'},
+    { code: 'CRP5286953'},
+]
 
 export function HowToBuySection() {
   return (
@@ -42,17 +48,38 @@ export function HowToBuySection() {
                 <CardTitle className="font-headline text-2xl">Portal Samsung Empresas</CardTitle>
               </CardHeader>
               <CardContent className="space-y-8">
-                {steps.map((item) => (
-                  <div key={item.step} className="flex items-start gap-4">
-                    <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground font-bold">
-                      {item.step}
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold">{item.title}</h3>
-                      <p className="mt-1 text-muted-foreground">{item.description}</p>
-                    </div>
-                  </div>
-                ))}
+                <div className='space-y-6'>
+                    {steps.map((item) => (
+                      <div key={item.step} className="flex items-start gap-4">
+                        <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground font-bold">
+                          {item.step}
+                        </div>
+                        <div>
+                          <h3 className="text-lg font-semibold">{item.title}</h3>
+                          <p className="mt-1 text-muted-foreground">{item.description}</p>
+                        </div>
+                      </div>
+                    ))}
+                </div>
+
+                <Card className='bg-primary/5'>
+                    <CardHeader>
+                        <CardTitle className='flex items-center gap-2 font-headline text-xl text-primary'>
+                           <TicketPercent /> Use nossos cupons!
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <p className='text-muted-foreground mb-4'>Utilize os cupons abaixo no portal para garantir descontos progressivos exclusivos em suas compras.</p>
+                        <div className='flex flex-wrap gap-3'>
+                            {coupons.map(coupon => (
+                                <div key={coupon.code} className='bg-background border-dashed border-2 border-primary/50 rounded-lg px-4 py-2 font-mono text-primary font-bold'>
+                                    {coupon.code}
+                                </div>
+                            ))}
+                        </div>
+                    </CardContent>
+                </Card>
+
                 <div className="mt-8 flex flex-col gap-4 sm:flex-row">
                   <Button asChild size="lg" className="flex-1">
                     <a href={process.env.NEXT_PUBLIC_PORTAL_EMPRESAS_URL} target="_blank" rel="noopener noreferrer">
